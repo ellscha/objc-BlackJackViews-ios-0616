@@ -46,28 +46,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.winner.hidden = YES;
-    
-    self.houseBustLabel.hidden = YES;
-    self.houseBlackjackLabel.hidden = YES;
-    self.houseStayedLabel.hidden = YES;
-    self.houseScoreLabel.hidden = YES;
-    
-    self.houseCard1Label.hidden = YES;
-    self.houseCard2Label.hidden = YES;
-    self.houseCard3Label.hidden = YES;
-    self.houseCard4Label.hidden = YES;
-    self.houseCard5Label.hidden = YES;
-    
-    self.playerStayedLabel.hidden = YES;
-    self.playerBustLabel.hidden = YES;
-    self.playerBlackjackLabel.hidden = YES;
-    
-    self.playerCard1Label.hidden = YES;
-    self.playerCard2Label.hidden = YES;
-    self.playerCard3Label.hidden = YES;
-    self.playerCard4Label.hidden = YES;
-    self.playerCard5Label.hidden = YES;
+    [self readyTheLabel];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -103,11 +82,38 @@
     self.houseWinsLabel.text = [NSString stringWithFormat:@"Wins: %li",self.game.house.wins];
     
 }
+
+-(void)readyTheLabel{
+    
+    self.winner.hidden = YES;
+    
+    self.houseBustLabel.hidden = YES;
+    self.houseBlackjackLabel.hidden = YES;
+    self.houseStayedLabel.hidden = YES;
+    self.houseScoreLabel.hidden = YES;
+    
+    self.houseCard1Label.hidden = YES;
+    self.houseCard2Label.hidden = YES;
+    self.houseCard3Label.hidden = YES;
+    self.houseCard4Label.hidden = YES;
+    self.houseCard5Label.hidden = YES;
+    
+    self.playerStayedLabel.hidden = YES;
+    self.playerBustLabel.hidden = YES;
+    self.playerBlackjackLabel.hidden = YES;
+    
+    self.playerCard1Label.hidden = YES;
+    self.playerCard2Label.hidden = YES;
+    self.playerCard3Label.hidden = YES;
+    self.playerCard4Label.hidden = YES;
+    self.playerCard5Label.hidden = YES;
+
+}
 - (IBAction)dealTapped:(UIButton *)sender {
-    [self viewDidLoad];
+    [self readyTheLabel];
     self.game = [[FISBlackjackGame alloc]init];
-    self.game.deck.shuffleRemainingCards;
-    self.game.dealNewRound;
+    [self.game.deck shuffleRemainingCards];
+    [self.game dealNewRound];
     self.playerCard1Label.hidden = NO;
     self.playerCard2Label.hidden = NO;
     self.houseCard1Label.hidden = NO;
